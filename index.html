@@ -301,6 +301,85 @@
         }
         @keyframes shimmer { to { background-position: 200% center; } }
 
+        /* ===== HIGHLIGHTS ===== */
+        .highlights-toolbar {
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 14px; max-width: 1060px; margin: 0 auto 32px; width: 100%;
+        }
+        .hl-filter-group { display: flex; gap: 8px; flex-wrap: wrap; }
+        .hl-filter-btn {
+            background: rgba(28, 37, 65, 0.6); color: var(--text-muted);
+            border: 1px solid var(--card-border); padding: 7px 16px; border-radius: 20px;
+            font-size: 0.82rem; font-weight: 500; cursor: pointer;
+            transition: var(--transition-smooth); font-family: var(--font-main);
+        }
+        .hl-filter-btn:hover, .hl-filter-btn.active {
+            background: rgba(212, 175, 55, 0.15); color: var(--accent-gold);
+            border-color: var(--accent-gold);
+        }
+        .hl-sort-toggle {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(28, 37, 65, 0.6); border: 1px solid var(--card-border);
+            padding: 7px 16px; border-radius: 20px; cursor: pointer;
+            color: var(--accent-gold); font-size: 0.82rem; font-weight: 600;
+            transition: var(--transition-smooth); user-select: none; font-family: var(--font-main);
+        }
+        .hl-sort-toggle:hover {
+            background: rgba(212, 175, 55, 0.18); border-color: var(--accent-gold);
+        }
+        .highlights-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px; max-width: 1060px; margin: 0 auto; width: 100%;
+        }
+        .highlight-card {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: var(--radius); padding: 24px; position: relative;
+            display: flex; flex-direction: column; justify-content: space-between;
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            transition: var(--transition-smooth); opacity: 0; transform: translateY(30px);
+            overflow: hidden;
+        }
+        .highlight-card.show { animation: hlCardIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards; }
+        .highlight-card::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 100%;
+            background: linear-gradient(180deg, var(--accent-gold), rgba(212, 175, 55, 0.1));
+            opacity: 0.7; transition: var(--transition-smooth);
+        }
+        .highlight-card:hover {
+            transform: translateY(-6px); border-color: rgba(212, 175, 55, 0.35);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4), 0 0 24px rgba(212, 175, 55, 0.1);
+        }
+        .highlight-card:hover::before { opacity: 1; width: 6px; }
+        .hl-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .hl-year {
+            font-size: 0.78rem; font-weight: 700; color: var(--accent-gold);
+            background: rgba(212, 175, 55, 0.12); padding: 4px 10px; border-radius: 12px;
+            letter-spacing: 0.5px;
+        }
+        .hl-company {
+            font-size: 0.76rem; font-weight: 600; color: var(--text-muted);
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .highlight-card h3 {
+            color: var(--text-main); font-size: 1.05rem; margin-bottom: 10px;
+            line-height: 1.4; font-weight: 700;
+        }
+        .highlight-card p {
+            color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;
+            margin-bottom: 18px; flex-grow: 1;
+        }
+        .hl-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+        .hl-tag {
+            background: rgba(255, 255, 255, 0.05); color: #cbd5e1;
+            font-size: 0.74rem; font-weight: 500; padding: 3px 9px;
+            border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: var(--transition-smooth);
+        }
+        .highlight-card:hover .hl-tag {
+            border-color: rgba(212, 175, 55, 0.25); color: var(--accent-gold-hover);
+        }
+        @keyframes hlCardIn { to { opacity: 1; transform: translateY(0); } }
+
         /* ===== SKILLS ===== */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; max-width: 900px; margin: 0 auto; width: 100%; }
         .skill-card {
@@ -482,6 +561,7 @@
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
+        <a href="#highlights">Highlights</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
     </nav>
@@ -541,9 +621,10 @@
                 </div>
                 <div class="view-work-nav">
                     <a href="#experience" class="nav-link-pill" style="animation-delay: 0.2s;">Work Experience</a>
-                    <a href="#education" class="nav-link-pill" style="animation-delay: 0.3s;">Education</a>
-                    <a href="#projects" class="nav-link-pill" style="animation-delay: 0.4s;">Projects</a>
-                    <a href="#skills" class="nav-link-pill" style="animation-delay: 0.5s;">Skills</a>
+                    <a href="#education" class="nav-link-pill" style="animation-delay: 0.28s;">Education</a>
+                    <a href="#projects" class="nav-link-pill" style="animation-delay: 0.36s;">Projects</a>
+                    <a href="#highlights" class="nav-link-pill" style="animation-delay: 0.44s;">Domain Highlights</a>
+                    <a href="#skills" class="nav-link-pill" style="animation-delay: 0.52s;">Skills</a>
                     <a href="#certifications" class="nav-link-pill" style="animation-delay: 0.6s;">Certifications</a>
                 </div>
             </div>
@@ -746,6 +827,189 @@
                         <span class="tech-pill">ASP.NET</span>
                         <span class="tech-pill">SQL</span>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====== HIGHLIGHTS ====== -->
+    <section id="highlights" class="observe">
+        <h2>Product & Domain Highlights</h2>
+        <p class="section-subtitle">Flagship payment platform modernizations and high-impact domain implementations.</p>
+
+        <!-- Highlights Toolbar: Filter Pills & Sort Toggle -->
+        <div class="highlights-toolbar">
+            <div class="hl-filter-group">
+                <button class="hl-filter-btn active" data-filter="all">All Highlights (10)</button>
+                <button class="hl-filter-btn" data-filter="visa">Visa (8)</button>
+                <button class="hl-filter-btn" data-filter="cognizant">Cognizant (2)</button>
+                <button class="hl-filter-btn" data-filter="clearing">Clearing & Settlement (6)</button>
+                <button class="hl-filter-btn" data-filter="innovation">AI & Next-Gen (4)</button>
+            </div>
+            <button class="hl-sort-toggle" id="hl-sort-btn" aria-label="Toggle chronological sorting order">
+                <span id="hl-sort-icon">⇅</span>
+                <span id="hl-sort-label">Order: Chronological (2015 → 2026)</span>
+            </button>
+        </div>
+
+        <div class="highlights-grid" id="highlights-grid">
+            <!-- 1. 2015 - 2019 (Cognizant) -->
+            <div class="highlight-card observe" data-chrono="1" data-company="cognizant" data-filter-types="all cognizant innovation">
+                <div class="hl-top">
+                    <span class="hl-year">2015 – 2019</span>
+                    <span class="hl-company">Cognizant</span>
+                </div>
+                <h3>EMV Technology & Tier-1 Merchant Certification</h3>
+                <p>Successfully onboarded and certified 10+ major US-based enterprise merchants (retail, supermarket, and petroleum) in EMV chip technology across Buypass, North, and Nashville specifications.</p>
+                <div class="hl-tags">
+                    <span class="hl-tag">EMV Level 1 & 2</span>
+                    <span class="hl-tag">Class B Certification</span>
+                    <span class="hl-tag">US Retail & Petroleum</span>
+                    <span class="hl-tag">Terminal Kernel</span>
+                </div>
+            </div>
+
+            <!-- 2. 2015 - 2021 (Cognizant) -->
+            <div class="highlight-card observe" data-chrono="2" data-company="cognizant" data-filter-types="all cognizant clearing">
+                <div class="hl-top">
+                    <span class="hl-year">2015 – 2021</span>
+                    <span class="hl-company">Cognizant</span>
+                </div>
+                <h3>Global Merchant Interchange Protection & Revenue Safeguard</h3>
+                <p>Prevented penalty interchange downgrades for global high-volume merchants by analyzing qualification parameters and remediating processing discrepancies, safeguarding millions in client revenue.</p>
+                <div class="hl-tags">
+                    <span class="hl-tag">Interchange Optimization</span>
+                    <span class="hl-tag">Qualification Rules</span>
+                    <span class="hl-tag">Revenue Safeguard</span>
+                    <span class="hl-tag">Downgrade Prevention</span>
+                </div>
+            </div>
+
+            <!-- 3. 2023 - 2024 (Visa) -->
+            <div class="highlight-card observe" data-chrono="3" data-company="visa" data-filter-types="all visa">
+                <div class="hl-top">
+                    <span class="hl-year">2023 – 2024</span>
+                    <span class="hl-company">Visa</span>
+                </div>
+                <h3>MIT / CIT Implementation via Card-on-File (COF) for Europe</h3>
+                <p>Spearheaded Merchant-Initiated (MIT) and Customer-Initiated (CIT) transaction frameworks leveraging Card-on-File (COF) capabilities for European markets under PSD2/SCA regulatory compliance.</p>
+                <div class="hl-tags">
+                    <span class="hl-tag">MIT / CIT</span>
+                    <span class="hl-tag">Card-on-File (COF)</span>
+                    <span class="hl-tag">PSD2 & SCA</span>
+                    <span class="hl-tag">European Mandates</span>
+                </div>
+            </div>
+
+            <!-- 4. 2024 (Visa) -->
+            <div class="highlight-card observe" data-chrono="4" data-company="visa" data-filter-types="all visa innovation">
+                <div class="hl-top">
+                    <span class="hl-year">2024</span>
+                    <span class="hl-company">Visa</span>
+                </div>
+                <h3>Acquirer Onboarding Automation</h3>
+                <p>Architected end-to-end self-service onboarding automation for global acquirers on Visa Platform Connect, streamlining credentialing, intake walkthroughs, and certification cycle times.</p>
+                <div class="hl-tags">
+                    <span class="hl-tag">Acquirer Automation</span>
+                    <span class="hl-tag">Visa Platform Connect</span>
+                    <span class="hl-tag">Self-Service Intake</span>
+                    <span class="hl-tag">API Orchestration</span>
+                </div>
+            </div>
+
+            <!-- 5. 2025 (Visa) -->
+            <div class="highlight-card observe" data-chrono="5" data-company="visa" data-filter-types="all visa clearing innovation">
+                <div class="hl-top">
+                    <span class="hl-year">2025</span>
+                    <span class="hl-company">Visa</span>
+                </div>
+                <h3>Event-Driven Clearing Generation on Google Cloud (KSA)</h3>
+                <p>Designed and deployed real-time Clearing file generation powered by Apache Kafka event streams hosted on Google Cloud Platform for Kingdom of Saudi Arabia (KSA) payment routing.</p>
+                <div class="hl-tags">
+                    <span class="hl-tag">Google Cloud (GCP)</span>
+                    <span class="hl-tag">Apache Kafka</span>
+                    <span class="hl-tag">Clearing Files</span>
+                    <span class="hl-tag">KSA Market</span>
+                </div>
+            </div>
+
+            <!-- 6. 2025 (Visa) -->
+            <div class="highlight-card observe" data-chrono="6" data-company="visa" data-filter-types="all visa clearing">
+                <div class="hl-top">
+                    <span class="hl-year">2025</span>
+                    <span class="hl-company">Visa</span>
+                </div>
+                <h3>Payments 2.0 Settlement for RuPay & China UnionPay</h3>
+                <p>Utilized Payments 2.0 architecture and Kafka streaming events to map and generate comprehensive settlement files for domestic and regional schemes (RuPay and China UnionPay).</p>
+                <div class="hl-tags">
+                    <span class="hl-tag">Payments 2.0</span>
+                    <span class="hl-tag">RuPay Scheme</span>
+                    <span class="hl-tag">China UnionPay</span>
+                    <span class="hl-tag">Settlement Files</span>
+                </div>
+            </div>
+
+            <!-- 7. 2026 (Visa) -->
+            <div class="highlight-card observe" data-chrono="7" data-company="visa" data-filter-types="all visa clearing">
+                <div class="hl-top">
+                    <span class="hl-year">2026</span>
+                    <span class="hl-company">Visa</span>
+                </div>
+                <h3>Fast Refund Architecture for India & APAC</h3>
+                <p>Spearheaded real-time Fast Refund processing mechanisms across India and APAC markets, reducing refund settlement latency to deliver instant cardholder credit confirmation.</p>
+                <div class="hl-tags">
+                    <span class="hl-tag">Fast Refund</span>
+                    <span class="hl-tag">APAC & India</span>
+                    <span class="hl-tag">Instant Settlement</span>
+                    <span class="hl-tag">ISO Messaging</span>
+                </div>
+            </div>
+
+            <!-- 8. 2026 (Visa) -->
+            <div class="highlight-card observe" data-chrono="8" data-company="visa" data-filter-types="all visa clearing">
+                <div class="hl-top">
+                    <span class="hl-year">2026</span>
+                    <span class="hl-company">Visa</span>
+                </div>
+                <h3>Force Refund Solution for SMCC Japan</h3>
+                <p>Engineered dedicated Force Refund capabilities for Sumitomo Mitsui Card Company (SMCC) Japan, resolving non-standard exception transactions and automating clearing adjustments.</p>
+                <div class="hl-tags">
+                    <span class="hl-tag">SMCC Japan</span>
+                    <span class="hl-tag">Force Refund</span>
+                    <span class="hl-tag">Cross-Border Exceptions</span>
+                    <span class="hl-tag">VisaNet Clearing</span>
+                </div>
+            </div>
+
+            <!-- 9. 2026 (Visa) -->
+            <div class="highlight-card observe" data-chrono="9" data-company="visa" data-filter-types="all visa innovation">
+                <div class="hl-top">
+                    <span class="hl-year">2026</span>
+                    <span class="hl-company">Visa</span>
+                </div>
+                <h3>Apple Pay India Launch via Cybersource</h3>
+                <p>Led technical product integration and gateway readiness for the landmark Apple Pay rollout in India, routed through Visa's Cybersource infrastructure.</p>
+                <div class="hl-tags">
+                    <span class="hl-tag">Apple Pay</span>
+                    <span class="hl-tag">Cybersource Gateway</span>
+                    <span class="hl-tag">Tokenization</span>
+                    <span class="hl-tag">India Market</span>
+                </div>
+            </div>
+
+            <!-- 10. 2026 (Visa) -->
+            <div class="highlight-card observe" data-chrono="10" data-company="visa" data-filter-types="all visa clearing innovation">
+                <div class="hl-top">
+                    <span class="hl-year">2026</span>
+                    <span class="hl-company">Visa</span>
+                </div>
+                <h3>Settlement Resiliency & Problem Detection via Agentic AI</h3>
+                <p>Pioneered Agentic AI workflows to detect anomalies and problematic transactions autonomously, synthesizing derived reconciliation data directly within Clearing files to eliminate settlement failures.</p>
+                <div class="hl-tags">
+                    <span class="hl-tag">Agentic AI</span>
+                    <span class="hl-tag">Settlement Resiliency</span>
+                    <span class="hl-tag">Anomaly Detection</span>
+                    <span class="hl-tag">Derived Clearing Data</span>
                 </div>
             </div>
         </div>
@@ -1010,10 +1274,10 @@
 
                 // Trigger child animations
                 const children = entry.target.querySelectorAll(
-                    '.nav-link-pill, .profile-pic, .mv-card, .exp-card, .edu-card, .proj-card, .skill-card, .cert-card, .achieve-card'
+                    '.nav-link-pill, .profile-pic, .mv-card, .exp-card, .edu-card, .proj-card, .skill-card, .cert-card, .achieve-card, .highlight-card'
                 );
                 children.forEach((child, i) => {
-                    setTimeout(() => child.classList.add('show'), i * 100);
+                    setTimeout(() => child.classList.add('show'), i * 80);
                 });
 
                 // Skill bars
@@ -1044,6 +1308,54 @@
     }, animObserverOptions);
 
     document.querySelectorAll('.observe').forEach(el => animObserver.observe(el));
+
+    // ===== HIGHLIGHTS FILTER & SORT LOGIC =====
+    (function() {
+        const filterBtns = document.querySelectorAll('.hl-filter-btn');
+        const grid = document.getElementById('highlights-grid');
+        const sortBtn = document.getElementById('hl-sort-btn');
+        const sortLabel = document.getElementById('hl-sort-label');
+        if (!grid) return;
+
+        let isAscending = true; // true: 2015 -> 2026 (Chronological), false: 2026 -> 2015 (Latest first)
+
+        // Filter functionality
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+                const cards = grid.querySelectorAll('.highlight-card');
+
+                cards.forEach(card => {
+                    const types = card.getAttribute('data-filter-types') || '';
+                    if (filter === 'all' || types.includes(filter)) {
+                        card.style.display = 'flex';
+                        setTimeout(() => card.classList.add('show'), 40);
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Sort toggle functionality
+        if (sortBtn && sortLabel) {
+            sortBtn.addEventListener('click', () => {
+                isAscending = !isAscending;
+                const cards = Array.from(grid.querySelectorAll('.highlight-card'));
+                cards.sort((a, b) => {
+                    const orderA = parseInt(a.getAttribute('data-chrono'), 10) || 0;
+                    const orderB = parseInt(b.getAttribute('data-chrono'), 10) || 0;
+                    return isAscending ? orderA - orderB : orderB - orderA;
+                });
+                cards.forEach(card => grid.appendChild(card));
+                sortLabel.innerText = isAscending
+                    ? 'Order: Chronological (2015 → 2026)'
+                    : 'Order: Latest First (2026 → 2015)';
+            });
+        }
+    })();
 
     // ===== CONTACT FORM =====
     document.getElementById('send-btn').addEventListener('click', () => {
